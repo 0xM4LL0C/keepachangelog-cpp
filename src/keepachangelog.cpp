@@ -1,5 +1,8 @@
 #include "keepachangelog.hpp"
 
+#include <date/date.h>
+
+#include <iomanip>
 #include <regex>
 #include <semver.hpp>
 #include <sstream>
@@ -60,12 +63,12 @@ Changelog Changelog::parse(const std::string& input) {
 
       if (!date_str.empty()) {
         std::istringstream date_stream(date_str);
-        std::chrono::sys_days date_days;
-        date_stream >> std::chrono::parse("%F", date_days);
-        if (date_stream.fail()) {
+        date::year_month_day ymd;
+        date::from_stream(date_stream, "%F", ymd);
+        if (date_stream.fail() || date_stream.bad()) {
           throw ParseError("Can't parse date: " + date_str);
         }
-        current_entry.date = std::chrono::year_month_day{date_days};
+        current_entry.date = ymd;
       }
 
       in_entry = true;

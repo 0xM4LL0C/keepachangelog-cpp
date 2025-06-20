@@ -1,5 +1,6 @@
 #pragma once
-#include <chrono>
+#include <date/date.h>
+
 #include <optional>
 #include <semver.hpp>
 #include <stdexcept>
@@ -29,7 +30,7 @@ struct Change {
 
 struct Entry {
   std::variant<std::string, semver::version<>> version;
-  std::optional<std::chrono::year_month_day> date;
+  std::optional<date::year_month_day> date;
   std::vector<Change> changes;
 };
 
