@@ -17,9 +17,9 @@ To build and use `keepachangelog-cpp`, you need:
 ### Building
 
 1. Clone the repository:
-   ```bash
-   git clone git@github.com:0xM4LL0C/keepachangelog-cpp
-   ```
+  ```bash
+  git clone git@github.com:0xM4LL0C/keepachangelog-cpp
+  ```
 
 2. Create a build directory:
   ```bash
